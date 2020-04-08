@@ -11,8 +11,6 @@ jobs:
           name: Tools install
           command: |
             curl https://glide.sh/get | sh
-            go get golang.org/x/tools/cmd/cover
-            go get github.com/mattn/goveralls
             curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -s -- -b $(go env GOPATH)/bin v1.24.0
             free -m
             df -lh
@@ -26,6 +24,8 @@ jobs:
       - run:
           name: Project proceed
           command: |
+            go get golang.org/x/tools/cmd/cover
+            go get github.com/mattn/goveralls
             go mod tidy
             go mod vendor
             ./scripts/check.sh
