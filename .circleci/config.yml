@@ -6,6 +6,9 @@ jobs:
     docker:
       - image: cimg/go:1.13
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "f0:cd:94:74:e7:89:5a:27:39:db:bd:3d:73:ad:51:89"
       - checkout
       - run:
           name: Tools install
